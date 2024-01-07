@@ -8,10 +8,21 @@
 import SwiftUI
 import SwiftData
 
+private struct AddModeKey: EnvironmentKey {
+  static let defaultValue = false
+}
+
+extension EnvironmentValues {
+  var addMode: Bool {
+    get { self[AddModeKey.self] }
+    set { self[AddModeKey.self] = newValue }
+  }
+}
+
 @main
 struct CountingApp: App {
     let modelContainer: ModelContainer
-        
+    
     init() {
         do {
             modelContainer = try ModelContainer(for: Counter.self)
