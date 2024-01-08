@@ -14,7 +14,7 @@ struct CounterListView: View {
 
     @Environment(\.modelContext) private var modelContext
     
-    @Query(sort: [SortDescriptor(\Counter.created, order: .reverse)])
+    @Query(sort: [SortDescriptor(\Counter.created, order: .forward)])
     private var allCounters: [Counter]
         
     var body: some View {

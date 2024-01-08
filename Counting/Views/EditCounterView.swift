@@ -95,6 +95,7 @@ struct EditCounterView: View {
         } else {
             // adding a counter
             let newCounter = Counter(title: title, count: count)
+            newCounter.setBackgroundColour(backgroundColour: backgroundColour)
             modelContext.insert(newCounter)
         }
     }
