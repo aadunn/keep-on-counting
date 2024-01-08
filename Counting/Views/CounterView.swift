@@ -40,6 +40,10 @@ struct CounterView: View {
         .sheet(isPresented: $showEditSheet) {
             if editMode?.wrappedValue == .active {
                 EditCounterView(counter: counter, editorTitle: "Edit Counter")
+                    .onDisappear {
+                        // set edit mode to inactive
+                        editMode?.wrappedValue = .inactive
+                    }
             }
         }
         .background(counter.getBackgroundColour())

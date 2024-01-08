@@ -10,48 +10,49 @@ import SwiftData
 
 struct CounterListView: View {
     @State var showNewCounterSheet = false
-    
-    @Environment(\.addMode) var addMode
-    @Environment(\.editMode) var editMode
+    @State var editMode = EditMode.inactive
+
     @Environment(\.modelContext) private var modelContext
     
     @Query(sort: [SortDescriptor(\Counter.created, order: .reverse)])
     private var allCounters: [Counter]
-    
+        
     var body: some View {
-        NavigationSplitView {
-                List {
-                    ForEach(allCounters) { counter in
-                        CounterView(counter: counter)
-                            .listRowInsets(EdgeInsets())
-                    }
-                    .onDelete(perform: delete)
+        NavigationView {
+            List {
+                ForEach(allCounters) { counter in
+                    CounterView(counter: counter)
+                        .listRowInsets(EdgeInsets())
                 }
-                .listStyle(.plain)
-                .padding(EdgeInsets(.zero))
-                .toolbar {
-                    ToolbarItem(placement: .cancellationAction){
-                        EditButton()
-                    }
-                    
-                    ToolbarItem(placement: .confirmationAction) {
-                        Button {
-                            showNewCounterSheet = true
-                        } label: {
-                            Label("Add new", systemImage: "plus")
-                                .labelStyle(.iconOnly)
-                        }
+                .onDelete(perform: delete)
+            }
+            .listStyle(.plain)
+            .padding(EdgeInsets(.zero))
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction){
+                    EditButton()
+                }
+                
+                ToolbarItem(placement: .confirmationAction) {
+                    Button {
+                        showNewCounterSheet = true
+                    } label: {
+                        Label("Add new", systemImage: "plus")
+                            .labelStyle(.iconOnly)
                     }
                 }
-                .navigationTitle("Counters")
-            
-        } detail: {
-            Text("List of counters")
+            }
+            .environment(\.editMode, $editMode) // binding state editMode to change upon sheet dismiss
+            .navigationTitle("Counters")
         }
         .sheet(isPresented: $showNewCounterSheet) {
-            if editMode?.wrappedValue == .inactive {
-                EditCounterView(editorTitle: "Add New Counter")
-            }
+            EditCounterView(editorTitle: "Add New Counter")
+                .onDisappear {
+                    setEditModeInactive()
+                }
+                .onAppear {
+                    setEditModeInactive()
+                }
         }
     }
     
@@ -60,6 +61,10 @@ struct CounterListView: View {
             let toDelete = allCounters[i]
             modelContext.delete(toDelete)
         }
+    }
+    
+    private func setEditModeInactive() {
+        editMode = .inactive
     }
 }
 

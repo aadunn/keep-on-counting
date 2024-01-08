@@ -17,6 +17,7 @@ struct EditCounterView: View {
     @State var backgroundColour: Color = Color.clear
     
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.editMode) private var editMode
     @Environment(\.modelContext) private var modelContext
     
     var body: some View {
@@ -45,16 +46,11 @@ struct EditCounterView: View {
                     selection: $backgroundColour,
                     supportsOpacity: false
                 )
-                
-                if let counter {
-                    Text("Created: \(counter.created.formatted())")
-                    Text("Last Updated: \(counter.updated.formatted())")
-                }
-                
             }
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel", role: .cancel) {
+                        editMode?.wrappedValue = .inactive
                         dismiss()
                     }
                 }
@@ -73,12 +69,17 @@ struct EditCounterView: View {
                 }
             }
             .onAppear {
-                // fill default values
+                // fill existing values
                 if let counter {
                     title = counter.title
                     count = counter.count
                     backgroundColour = counter.getBackgroundColour()
                 }
+            }
+            
+            if let counter {
+                Text("Created: \(counter.created.formatted(date: .abbreviated, time: .shortened))")
+                Text("Last Updated: \(counter.updated.formatted(date: .abbreviated, time: .shortened))")
             }
         }
     }
