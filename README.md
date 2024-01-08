@@ -1,8 +1,6 @@
 # counting
 iOS app for storing multiple counters. For all your counting needs!
 
-Used this app as a way for me to learn SwiftUI and SwiftData.
-
 ## Screenshots
 <span>
   <img src="https://github.com/aadunn/counting/assets/6656815/48699e8d-d132-4ecd-9151-0698a165beeb" width=200px>
