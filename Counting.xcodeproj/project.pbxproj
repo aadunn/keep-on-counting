@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC1A714F2B4E27380013380A /* CounterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1A714E2B4E27380013380A /* CounterDetailView.swift */; };
 		CC3CE5B42B2391C400167603 /* EditCounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3CE5B32B2391C400167603 /* EditCounterView.swift */; };
 		CC6141E82AF83D2100967813 /* CountingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6141E72AF83D2100967813 /* CountingApp.swift */; };
 		CC6141EA2AF83D2100967813 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6141E92AF83D2100967813 /* ContentView.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CC1A714E2B4E27380013380A /* CounterDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CounterDetailView.swift; sourceTree = "<group>"; };
 		CC3CE5B32B2391C400167603 /* EditCounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCounterView.swift; sourceTree = "<group>"; };
 		CC6141E42AF83D2100967813 /* Counting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Counting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC6141E72AF83D2100967813 /* CountingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountingApp.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 		CC3CE5B52B23CA3500167603 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CC1A714E2B4E27380013380A /* CounterDetailView.swift */,
 				CC6141E92AF83D2100967813 /* ContentView.swift */,
 				CC6142112AF8419B00967813 /* CounterListView.swift */,
 				CC6142132AF87E1F00967813 /* CounterView.swift */,
@@ -262,6 +265,7 @@
 			files = (
 				CC6142162AF9236E00967813 /* Counter.swift in Sources */,
 				CC6141EA2AF83D2100967813 /* ContentView.swift in Sources */,
+				CC1A714F2B4E27380013380A /* CounterDetailView.swift in Sources */,
 				CC6141E82AF83D2100967813 /* CountingApp.swift in Sources */,
 				CC3CE5B42B2391C400167603 /* EditCounterView.swift in Sources */,
 				CC6142122AF8419B00967813 /* CounterListView.swift in Sources */,
